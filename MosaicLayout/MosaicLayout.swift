@@ -37,11 +37,72 @@ class MosaicLayout: UICollectionViewLayout {
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return cachedAttributes[indexPath.item]
     }
+
+    // Filter method:
+    // Max = 0.975ms
+    // Min = 0.385ms
+
+    // Binary search:
+
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        return cachedAttributes.filter({ (attribute) -> Bool in
-            rect.intersects(attribute.frame)
-        })
+        print("Layout fort")
+        let tick = CACurrentMediaTime()
+//        let frames = cachedAttributes.filter({ (attribute) -> Bool in
+//            rect.intersects(attribute.frame)
+//        })
+
+        let count = cachedAttributes.count
+
+        var previousIndex = 0
+        var currentIndex = count / 2
+        var minIndex = Int.max
+        var maxIndex = 0
+
+        while true {
+            let frame = cachedAttributes[currentIndex].frame
+
+            if currentIndex == previousIndex {
+                minIndex = currentIndex
+                break
+            }
+
+            if frame.maxY < rect.minY {
+                let next = (currentIndex - previousIndex) / 2
+                previousIndex = currentIndex
+                currentIndex += abs(next)
+            } else {
+                let next = (currentIndex - previousIndex) / 2
+                previousIndex = currentIndex
+                currentIndex -= abs(next)
+            }
+        }
+
+        previousIndex = 0
+        currentIndex = count / 2
+
+        while true {
+
+            let frame = cachedAttributes[currentIndex].frame
+            if currentIndex == previousIndex {
+                maxIndex = currentIndex
+                break
+            }
+
+            if frame.minY > rect.maxY {
+                let next = (currentIndex - previousIndex) / 2
+                previousIndex = currentIndex
+                currentIndex -= abs(next)
+            } else {
+                let next = (currentIndex - previousIndex) / 2
+                previousIndex = currentIndex
+                currentIndex += abs(next)
+            }
+        }
+
+        print("Layout in rect:", CACurrentMediaTime() - tick)
+        return Array(cachedAttributes[minIndex ..< maxIndex])
+//        return frames
     }
     
     override var collectionViewContentSize: CGSize {

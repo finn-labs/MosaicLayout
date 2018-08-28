@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let dataSource = DataSource(data: Array<Int>(repeating: 0, count: 36))
+    let dataSource = DataSource(data: Array<Int>(repeating: 0, count: 1000 * 9))
     
     lazy var collectionView: UICollectionView = {
         let layout = MosaicLayout(dataSource: dataSource)
