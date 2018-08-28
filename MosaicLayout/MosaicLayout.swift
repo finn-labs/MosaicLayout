@@ -38,18 +38,25 @@ class MosaicLayout: UICollectionViewLayout {
         return cachedAttributes[indexPath.item]
     }
 
+    // 9000 Items
+    // -------------------
     // Filter method:
-    // Max = 0.975ms
-    // Min = 0.385ms
+    // Max = 5.598ms
+    // Min = 3.543ms
+    // Check: 9000
 
     // Binary search:
+    // Max = 0.0585ms
+    // Min = 0.0142ms
+    // Check: 26
 
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        print("Layout fort")
         let tick = CACurrentMediaTime()
+        var checks = 0
 //        let frames = cachedAttributes.filter({ (attribute) -> Bool in
-//            rect.intersects(attribute.frame)
+//            checks += 1
+//            return rect.intersects(attribute.frame)
 //        })
 
         let count = cachedAttributes.count
@@ -60,12 +67,8 @@ class MosaicLayout: UICollectionViewLayout {
         var maxIndex = 0
 
         while true {
+            checks += 1
             let frame = cachedAttributes[currentIndex].frame
-
-            if currentIndex == previousIndex {
-                minIndex = currentIndex
-                break
-            }
 
             if frame.maxY < rect.minY {
                 let next = (currentIndex - previousIndex) / 2
@@ -76,18 +79,19 @@ class MosaicLayout: UICollectionViewLayout {
                 previousIndex = currentIndex
                 currentIndex -= abs(next)
             }
+
+            if currentIndex == previousIndex {
+                minIndex = currentIndex
+                break
+            }
         }
 
         previousIndex = 0
         currentIndex = count / 2
 
         while true {
-
+            checks += 1
             let frame = cachedAttributes[currentIndex].frame
-            if currentIndex == previousIndex {
-                maxIndex = currentIndex
-                break
-            }
 
             if frame.minY > rect.maxY {
                 let next = (currentIndex - previousIndex) / 2
@@ -98,9 +102,14 @@ class MosaicLayout: UICollectionViewLayout {
                 previousIndex = currentIndex
                 currentIndex += abs(next)
             }
+
+            if currentIndex == previousIndex {
+                maxIndex = currentIndex
+                break
+            }
         }
 
-        print("Layout in rect:", CACurrentMediaTime() - tick)
+        print("Layout in rect:", CACurrentMediaTime() - tick, "checks:", checks)
         return Array(cachedAttributes[minIndex ..< maxIndex])
 //        return frames
     }
