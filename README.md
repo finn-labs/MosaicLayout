@@ -1,3 +1,3 @@
 # MosaicLayout
 
-A UICollectionView with a Instragram layout
+A UICollectionView with an Instragram layout
