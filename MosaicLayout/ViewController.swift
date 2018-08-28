@@ -10,7 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let dataSource = DataSource(data: Array<Int>(repeating: 0, count: 36))
+    let dataSource = DataSource(data: Array<Int>(repeating: 0, count: 360))
+
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     lazy var collectionView: UICollectionView = {
         let layout = MosaicLayout(dataSource: dataSource)

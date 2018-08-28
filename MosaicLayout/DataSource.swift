@@ -26,7 +26,7 @@ class DataSource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = UIColor(hue: CGFloat(arc4random()) / 0xFFFFFFFF, saturation: 0.6, brightness: 0.75, alpha: 1.0)
+        cell.backgroundColor = UIColor(hue: CGFloat(indexPath.item) / CGFloat(count), saturation: 0.3, brightness: 0.3, alpha: 1.0)
         return cell
     }
     
