@@ -9,17 +9,27 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    let dataSource = DataSource(data: Array<Int>(repeating: 0, count: 36))
+    
+    lazy var collectionView: UICollectionView = {
+        let layout = MosaicLayout(dataSource: dataSource)
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.backgroundColor = .white
+        collection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collection.dataSource = dataSource
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        return collection
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        view.addSubview(collectionView)
+        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 
 
 }
-

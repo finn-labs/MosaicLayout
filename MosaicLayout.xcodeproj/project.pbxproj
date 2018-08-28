@@ -7,21 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA485E222135821E0092AB15 /* MosiacRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA485E212135821E0092AB15 /* MosiacRows.swift */; };
 		DAC038242119A23100CD49B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC038232119A23100CD49B7 /* AppDelegate.swift */; };
 		DAC038262119A23100CD49B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC038252119A23100CD49B7 /* ViewController.swift */; };
-		DAC038292119A23100CD49B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAC038272119A23100CD49B7 /* Main.storyboard */; };
 		DAC0382B2119A23200CD49B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAC0382A2119A23200CD49B7 /* Assets.xcassets */; };
 		DAC0382E2119A23200CD49B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAC0382C2119A23200CD49B7 /* LaunchScreen.storyboard */; };
+		DAC038362119A29F00CD49B7 /* MosaicLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC038352119A29F00CD49B7 /* MosaicLayout.swift */; };
+		DAC038382119A2AC00CD49B7 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC038372119A2AC00CD49B7 /* DataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA485E212135821E0092AB15 /* MosiacRows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosiacRows.swift; sourceTree = "<group>"; };
 		DAC038202119A23100CD49B7 /* MosaicLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MosaicLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAC038232119A23100CD49B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAC038252119A23100CD49B7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DAC038282119A23100CD49B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DAC0382A2119A23200CD49B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAC0382D2119A23200CD49B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DAC0382F2119A23200CD49B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAC038352119A29F00CD49B7 /* MosaicLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicLayout.swift; sourceTree = "<group>"; };
+		DAC038372119A2AC00CD49B7 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +60,9 @@
 			children = (
 				DAC038232119A23100CD49B7 /* AppDelegate.swift */,
 				DAC038252119A23100CD49B7 /* ViewController.swift */,
-				DAC038272119A23100CD49B7 /* Main.storyboard */,
+				DAC038372119A2AC00CD49B7 /* DataSource.swift */,
+				DAC038352119A29F00CD49B7 /* MosaicLayout.swift */,
+				DA485E212135821E0092AB15 /* MosiacRows.swift */,
 				DAC0382A2119A23200CD49B7 /* Assets.xcassets */,
 				DAC0382C2119A23200CD49B7 /* LaunchScreen.storyboard */,
 				DAC0382F2119A23200CD49B7 /* Info.plist */,
@@ -124,7 +130,6 @@
 			files = (
 				DAC0382E2119A23200CD49B7 /* LaunchScreen.storyboard in Resources */,
 				DAC0382B2119A23200CD49B7 /* Assets.xcassets in Resources */,
-				DAC038292119A23100CD49B7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,7 +140,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAC038362119A29F00CD49B7 /* MosaicLayout.swift in Sources */,
 				DAC038262119A23100CD49B7 /* ViewController.swift in Sources */,
+				DA485E222135821E0092AB15 /* MosiacRows.swift in Sources */,
+				DAC038382119A2AC00CD49B7 /* DataSource.swift in Sources */,
 				DAC038242119A23100CD49B7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,14 +151,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DAC038272119A23100CD49B7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DAC038282119A23100CD49B7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DAC0382C2119A23200CD49B7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
